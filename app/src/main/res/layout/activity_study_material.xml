@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray00"
+    tools:context=".StudyMaterialActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/shape_rect01"
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:id="@+id/schoolDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="80dp"
+            android:text="Study Material"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/materialRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_below="@id/toolbarRl"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/caption"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please Select Your Branch and Semester:"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/branchTv"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/caption"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/shape_rect02"
+                android:drawableEnd="@drawable/ic_down_primary"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_category_primary"
+                android:gravity="center_vertical"
+                android:hint="Select Branch"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <TextView
+                android:id="@+id/semesterTv"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/branchTv"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_rect02"
+                android:drawableEnd="@drawable/ic_down_primary"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_category_primary"
+                android:gravity="center_vertical"
+                android:hint="Select Semester"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+        </RelativeLayout>
+
+    <Button
+        android:id="@+id/searchMaterialBtn"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/shape_rect02"
+        android:minHeight="52dp"
+        android:text="Search"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addMaterialBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="6dp"
+        android:src="@drawable/ic_add_white"
+        app:fabSize="normal" />
+
+
+</RelativeLayout>

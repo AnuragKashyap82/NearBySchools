@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray00"
+    tools:context=".EditAssignmentActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/shape_rect01"
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Update Assignment"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/assignmentPdfBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_pdf_white" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarRl">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginRight="20dp">
+
+            <EditText
+                android:id="@+id/assignmentNameEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_assignment_primary"
+                android:gravity="center_vertical"
+                android:hint="Assignment Name"
+                android:maxHeight="72dp"
+                android:minHeight="52dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/fullMarksTv"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/assignmentNameEt"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawableEnd="@drawable/ic_down_primary"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_assignment_primary"
+                android:gravity="center_vertical"
+                android:hint="Full Marks"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <TextView
+                android:id="@+id/branchTv"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/fullMarksTv"
+                android:background="@drawable/shape_rect02"
+                android:drawableEnd="@drawable/ic_down_primary"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_category_primary"
+                android:gravity="center_vertical"
+                android:hint="Branch"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <TextView
+                android:id="@+id/semesterTv"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/branchTv"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawableEnd="@drawable/ic_down_primary"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_category_primary"
+                android:gravity="center_vertical"
+                android:hint="Semester"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <TextView
+                android:id="@+id/yearTv"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/semesterTv"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawableEnd="@drawable/ic_down_primary"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_calendar_primary"
+                android:gravity="center_vertical"
+                android:hint="Year"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <TextView
+                android:id="@+id/dueDateTv"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/yearTv"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawableEnd="@drawable/ic_down_primary"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_calendar_primary"
+                android:gravity="center_vertical"
+                android:hint="Due Date"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/assignedBy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:layout_below="@id/dueDateTv"
+                android:drawablePadding="10dp"
+                android:minHeight="52dp"
+                android:maxHeight="72dp"
+                android:drawableStart="@drawable/ic_person_gray"
+                android:gravity="center_vertical"
+                android:hint="Assigned By"
+                android:padding="10dp"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <Button
+                android:id="@+id/updateAssignmentBtn"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="52dp"
+                android:layout_below="@id/assignedBy"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/button_background"
+                android:drawablePadding="10dp"
+                android:minWidth="150dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:text="Update Assignment"
+                android:textColor="@color/white" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="5dp"
+    app:cardBackgroundColor="@color/textBox"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="3dp"
+    app:contentPadding="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/schoolRl"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:layout_marginEnd="5dp"
+            android:background="@color/colorGray02">
+
+            <ImageView
+                android:id="@+id/profileIv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/schoolNameTv"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/schoolRl"
+            android:layout_toStartOf="@id/moreButton"
+            android:maxLines="1"
+            android:minLines="1"
+            android:text="School Name"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/emailTv"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/schoolNameTv"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/schoolRl"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:text="anurag@kashyap.com"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/districtTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailTv"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/schoolRl"
+            android:maxLines="1"
+            android:text="District"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/boardTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_toEndOf="@id/schoolRl"
+            android:background="@drawable/shape_rect02"
+            android:backgroundTint="@color/colorPrimary"
+            android:maxLines="1"
+            android:padding="1dp"
+            android:maxWidth="180dp"
+            android:text="Board"
+            android:textColor="@color/white" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/ratingTv"
+            android:layout_alignParentEnd="true"
+            android:numStars="5"
+            android:progressBackgroundTint="@color/colorPrimary"
+            android:progressTint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/ratingTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:maxLines="1"
+            android:text="4.5"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/phoneTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/districtTv"
+            android:layout_toEndOf="@id/schoolRl"
+            android:maxLines="1"
+            android:text="+917091767371"
+            android:textColor="@color/black" />
+
+        <ImageButton
+            android:id="@+id/moreButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:padding="5dp"
+
+            android:src="@drawable/ic_more_primary" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

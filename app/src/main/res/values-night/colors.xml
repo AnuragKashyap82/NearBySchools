@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="purple_200">#000000</color>
+    <color name="purple_500">#000000</color>
+    <color name="purple_700">#000000</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="textBox">#959595</color>
+    <color name="Gray01">#655E5E</color>
+    <color name="blue01">#0D78A9</color>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorGray00">#474646</color>
+    <color name="colorGray01">#D6D5D5</color>
+    <color name="strokesColor">#000000</color>
+    <color name="colorGray02">#959595</color>
+
+</resources>

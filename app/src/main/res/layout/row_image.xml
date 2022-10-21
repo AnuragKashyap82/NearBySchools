@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    app:cardCornerRadius="5dp"
+    android:elevation="5dp"
+    app:cardBackgroundColor="@color/textBox">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageIv"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_gallery_primary" />
+
+        <LinearLayout
+            android:id="@+id/arrayListLl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:layout_below="@id/imageIv"
+            android:background="@color/textBox">
+
+            <TextView
+                android:id="@+id/noLike"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="N/A"
+                android:layout_marginRight="2dp"
+                android:layout_marginLeft="2dp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:background="@color/textBox"
+                android:src="@drawable/ic_like_outline"/>
+
+            <TextView
+                android:id="@+id/noComment"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="N/A"
+                android:layout_marginRight="2dp"
+                android:layout_marginLeft="2dp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:background="@color/textBox"
+                android:src="@drawable/ic_comment_primary"/>
+
+            <TextView
+                android:id="@+id/noDownload"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="N/A"
+                android:layout_marginRight="2dp"
+                android:layout_marginLeft="2dp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:background="@color/textBox"
+                android:src="@drawable/ic_download_primary"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/like"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:layout_marginBottom="5dp"
+            android:background="@color/textBox"
+            android:layout_below="@id/arrayListLl">
+
+            <ImageButton
+                android:id="@+id/likeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginRight="2dp"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/shape_rect_05"
+                android:src="@drawable/ic_like_outline"/>
+
+            <ImageButton
+                android:id="@+id/commentBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginRight="2dp"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/shape_rect_05"
+                android:src="@drawable/ic_comment_primary"/>
+
+            <ImageButton
+                android:id="@+id/downloadImageBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginRight="2dp"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/shape_rect_05"
+                android:src="@drawable/ic_download_primary"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+   </androidx.cardview.widget.CardView>

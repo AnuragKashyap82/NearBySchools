@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "123970502186",
+    "project_id": "edu-search-57bdc",
+    "storage_bucket": "edu-search-57bdc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123970502186:android:30e5112a292790a5a9cd53",
+        "android_client_info": {
+          "package_name": "com.anurag.edusearch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123970502186-n9ie9hsjjivpok30qa9vrd6da1bju21i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYxUpt1HRpOJh4XLouESuvMSsZx6U8eTg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123970502186-n9ie9hsjjivpok30qa9vrd6da1bju21i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

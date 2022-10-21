@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray00"
+    tools:context=".ProfileEditUserActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/shape_rect01"
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_back_white" />
+
+        <ImageButton
+            android:id="@+id/gpsBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_gps_white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="48dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Edit Your Profile"
+                android:textColor="@color/white"
+                android:textSize="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Here you can update your basic details"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Edit Profile"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarRl">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+                android:id="@+id/profileIv"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_person_gray"
+                android:tint="@color/colorGray01"
+                app:c_border="true"
+                app:c_border_color="@color/colorPrimary"
+                app:c_border_width="1dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailTil"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:boxBackgroundColor="@color/colorGray00"
+                android:layout_below="@id/nameTil"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                <EditText
+                    android:id="@+id/emailEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/profileIv"
+                    android:backgroundTint="@color/colorGray00"
+                    android:drawableEnd="@drawable/ic_verified_user"
+                    android:drawablePadding="10dp"
+                    android:imeOptions="actionNext"
+                    android:drawableStart="@drawable/ic_mail_gray"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/Gray01"
+                    android:textSize="15dp"
+                    android:visibility="visible" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailNotVerifiedTil"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_below="@id/nameTil"
+                app:boxBackgroundColor="@color/colorGray00"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                <EditText
+                    android:id="@+id/emailNotVerifiedEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/emailTil"
+                    android:layout_centerHorizontal="true"
+                    android:backgroundTint="@color/colorGray00"
+                    android:textSize="15dp"
+                    android:drawableEnd="@drawable/ic_notverified_user"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_mail_gray"
+                    android:gravity="center_vertical"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/colorGray01"
+                    android:visibility="gone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameTil"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_below="@id/profileIv"
+                app:boxBackgroundColor="@color/colorGray00"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                <EditText
+                    android:id="@+id/nameEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/black"
+                    android:paddingRight="26dp"
+                    android:paddingLeft="26dp"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_person_gray"
+                    android:textColorHint="@color/Gray01"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phoneTil"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:prefixText="+91"
+                app:prefixTextColor="@color/Gray01"
+                android:layout_below="@id/emailNotVerifiedTil"
+                app:boxBackgroundColor="@color/colorGray00"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                <EditText
+                    android:id="@+id/phoneTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone Number"
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:textColor="@color/black"
+                    android:paddingRight="26dp"
+                    android:paddingLeft="26dp"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_phone_gray"
+                    android:textColorHint="@color/Gray01"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:id="@+id/addressLl"
+                android:layout_below="@id/phoneTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/countryTil"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:layout_below="@id/addressLl"
+                    app:boxBackgroundColor="@color/colorGray00"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                    <EditText
+                        android:id="@+id/countryEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Country"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPostalAddress"
+                        android:textColor="@color/black"
+                        android:paddingRight="26dp"
+                        android:paddingLeft="26dp"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_city_primary"
+                        android:textColorHint="@color/Gray01"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/stateTil"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:layout_below="@id/addressLl"
+                    app:boxBackgroundColor="@color/colorGray00"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                    <EditText
+                        android:id="@+id/stateEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="State"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPostalAddress"
+                        android:textColor="@color/black"
+                        android:paddingRight="26dp"
+                        android:paddingLeft="26dp"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_city_primary"
+                        android:textColorHint="@color/Gray01"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/cityTil"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:layout_below="@id/addressLl"
+                    app:boxBackgroundColor="@color/colorGray00"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                    <EditText
+                        android:id="@+id/cityEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="City"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPostalAddress"
+                        android:textColor="@color/black"
+                        android:paddingRight="26dp"
+                        android:paddingLeft="26dp"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_city_primary"
+                        android:textColorHint="@color/Gray01"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addressTil"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_below="@id/addressLl"
+                app:boxBackgroundColor="@color/colorGray00"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                <EditText
+                    android:id="@+id/addressEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Complete Address"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPostalAddress"
+                    android:textColor="@color/black"
+                    android:paddingRight="26dp"
+                    android:paddingLeft="26dp"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_location_primary"
+                    android:textColorHint="@color/Gray01"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/updateBtn"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="52dp"
+                android:layout_below="@id/addressTil"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/button_background"
+                android:drawablePadding="10dp"
+                android:minWidth="150dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:text="Update"
+                android:textColor="@color/white"
+                android:textColorHint="@color/colorGray01" />
+
+            <Button
+                android:id="@+id/verifyEmailBtn"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/updateBtn"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:minWidth="150dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:text="Verify Your Email"
+                android:textColor="@color/white"
+                android:textColorHint="@color/colorGray01"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

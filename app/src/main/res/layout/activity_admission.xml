@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/textBox"
+    tools:context=".AdmissionActivity">
+
+    <RelativeLayout
+        android:id="@+id/schoolRl"
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+        android:layout_marginTop="5dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_rect01" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="10dp">
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="110dp"
+                android:numStars="5"
+                android:progressBackgroundTint="@color/colorGray00"
+                android:progressTint="@color/white" />
+
+            <TextView
+                android:id="@+id/emailTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/phoneTv"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="10dp"
+                android:autoLink="email"
+                android:maxWidth="200dp"
+                android:text="Email"
+                android:textColor="@color/white"
+                android:textColorLink="@color/white" />
+
+
+            <TextView
+                android:id="@+id/schoolNameTv"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="5dp"
+                android:text="School Name"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/addressTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/schoolNameTv"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="10dp"
+                android:maxLines="2"
+                android:maxWidth="200dp"
+                android:text="Address"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/districtTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/addressTv"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="10dp"
+                android:text="District"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/schoolWebsiteTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/districtTv"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="10dp"
+                android:autoLink="all"
+                android:maxLines="1"
+                android:maxWidth="300dp"
+                android:text="officialWebsite"
+                android:textColor="@color/white"
+                android:textColorLink="@color/white" />
+
+            <TextView
+                android:id="@+id/phoneTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/schoolNameTv"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="10dp"
+                android:text="Phone"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/shape_rect01"
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:id="@+id/schoolDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Admission Details"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/schoolRl">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/admissionIv"
+                android:layout_width="350dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@color/textBox"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_school_primary" />
+
+            <TextView
+                android:id="@+id/admissionProcedureHeading"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/admissionIv"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:text="Admission Procedure"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/admissionProcedure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/admissionProcedureHeading"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:minHeight="200dp"
+                android:text="Admission Procedure"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/linkHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/admissionProcedure"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Admission Form Link:"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/googleFormLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linkHeading"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="2dp"
+                android:autoLink="web"
+                android:background="@drawable/shape_rect02"
+                android:gravity="center"
+                android:minHeight="50dp"
+                android:text="googleform.com/link"
+                android:textColor="@color/colorPrimary" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/admissionDetailBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="6dp"
+        android:src="@drawable/ic_edit_white"
+        app:fabSize="normal" />
+
+</RelativeLayout>

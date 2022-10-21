@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray00"
+    tools:context=".SchoolEditActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/shape_rect01"
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Edit School"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarRl">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/profileIv"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_rect02"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_school_primary" />
+
+            <EditText
+                android:id="@+id/schoolNameEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/profileIv"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_school_primary"
+                android:hint="School Name"
+                android:inputType="textCapWords"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/boardEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/schoolNameEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawableEnd="@drawable/ic_down_primary"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_school_primary"
+                android:gravity="center_vertical"
+                android:hint="Board"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/emailEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/boardEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_mail_gray"
+                android:hint="School Email"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/phoneEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/emailEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_phone_gray"
+                android:hint="School Contact No."
+                android:inputType="phone"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/schoolWebsiteEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/phoneEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_web_primary"
+                android:hint="School Official Website"
+                android:inputType="textWebEditText"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/districtTv"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/schoolWebsiteEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawableEnd="@drawable/ic_down_primary"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_city_primary"
+                android:gravity="center_vertical"
+                android:hint="District"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/addressEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/districtTv"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_location_primary"
+                android:hint="Complete Address"
+                android:inputType="textPostalAddress|textMultiLine"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <LinearLayout
+                android:id="@+id/addressLl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/addressEt"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/latitudeEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_below="@id/districtTv"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_rect02"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_location_primary"
+                    android:hint="Latitude"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/Gray01" />
+
+
+                <EditText
+                    android:id="@+id/longitudeEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_below="@id/districtTv"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_rect02"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_location_primary"
+                    android:hint="Longitude"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/Gray01" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/areaEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/addressLl"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_location_primary"
+                android:hint="Campus Area in Acres"
+                android:inputType="numberDecimal"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/facultyNoEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/areaEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_person_gray"
+                android:hint="No. Of Faculty"
+                android:inputType="number"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/principalEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/facultyNoEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_person_gray"
+                android:hint="Principal"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/vicePrinEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/principalEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_person_gray"
+                android:hint="Vice Principal"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/schoolCodeEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/vicePrinEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_school_primary"
+                android:hint="School Code"
+                android:inputType="textCapWords"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/schoolType"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/schoolCodeEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_school_primary"
+                android:hint="School Type"
+                android:inputType="textCapWords"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/founderEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/schoolType"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_person_gray"
+                android:hint="Founder"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/highestDegreeEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/founderEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_degree_primary"
+                android:hint="Highest Degree"
+                android:inputType="textMultiLine"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/rankingEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/highestDegreeEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_location_primary"
+                android:hint="Ranking"
+                android:inputType="number"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/timingEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/rankingEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_time_primary"
+                android:hint="Timing"
+                android:inputType="textMultiLine"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/nurseryEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/timingEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_money_primary"
+                android:hint="Nursery-UKG"
+                android:inputType="textCapWords"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/oneToFourEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/nurseryEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_money_primary"
+                android:hint="i - iv"
+                android:inputType="textCapWords"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/fiveToSevenEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/oneToFourEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_money_primary"
+                android:hint="v - vii"
+                android:inputType="textCapWords"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/eightToTenEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/fiveToSevenEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_money_primary"
+                android:hint="viii - x"
+                android:inputType="textCapWords"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <EditText
+                android:id="@+id/elevenToTwelveEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/eightToTenEt"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rect02"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_money_primary"
+                android:hint="xi - xii"
+                android:inputType="textCapWords"
+                android:padding="10dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <Button
+                android:id="@+id/updateSchoolBtn"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/elevenToTwelveEt"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_rect02"
+                android:minHeight="50dp"
+                android:text="Update School"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+  </RelativeLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/textBox"
+    tools:context=".ImageViewActivity">
+
+    <RelativeLayout
+        android:id="@+id/imageRl"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/shape_rect01"
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Image"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <com.ortiz.touchview.TouchImageView
+        android:id="@+id/imageIv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/imageRl"
+        android:layout_marginBottom="20dp"
+        android:layout_centerInParent="true"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="10dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/deleteImageBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/arrayListRl"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="6dp"
+        android:src="@drawable/ic_delete_white"
+        app:fabSize="normal" />
+
+    <RelativeLayout
+        android:id="@+id/arrayListRl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/numberRl">
+
+        <LinearLayout
+            android:id="@+id/likeLl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:background="@color/colorGray00">
+
+            <ImageButton
+                android:id="@+id/likeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:background="@color/textBox"
+                android:src="@drawable/ic_like_outline"/>
+
+            <ImageButton
+                android:id="@+id/commentBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:background="@color/textBox"
+                android:src="@drawable/ic_comment_primary"/>
+
+            <ImageButton
+                android:id="@+id/downloadImageBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:background="@color/textBox"
+                android:src="@drawable/ic_download_primary"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/numberRl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:id="@+id/arrayListLl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:layout_marginBottom="20dp"
+            android:background="@color/colorGray00">
+
+            <TextView
+                android:id="@+id/noLike"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="N/A"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:background="@color/textBox"
+                android:src="@drawable/ic_like_outline"/>
+
+            <TextView
+                android:id="@+id/noComment"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="N/A"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:background="@color/textBox"
+                android:src="@drawable/ic_comment_primary"/>
+
+            <TextView
+                android:id="@+id/noDownload"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="N/A"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:background="@color/textBox"
+                android:src="@drawable/ic_download_primary"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

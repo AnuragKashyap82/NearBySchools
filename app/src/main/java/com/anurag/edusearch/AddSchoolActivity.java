@@ -1,0 +1,486 @@
+package com.anurag.edusearch;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import android.Manifest;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.ContentValues;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.text.TextUtils;
+import android.util.Log;
+import android.util.Patterns;
+import android.view.View;
+import android.widget.Toast;
+
+import com.anurag.edusearch.databinding.ActivityAddDistrictBinding;
+import com.anurag.edusearch.databinding.ActivityAddSchoolBinding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import static android.content.ContentValues.TAG;
+
+public class AddSchoolActivity extends AppCompatActivity {
+
+    private ActivityAddSchoolBinding binding;
+    private FirebaseAuth firebaseAuth;
+    private ProgressDialog progressDialog;
+
+    private static final int CAMERA_REQUEST_CODE = 200;
+    private static final int STORAGE_REQUEST_CODE = 300;
+
+    private String[] cameraPermission;
+    private String[] storagePermission;
+
+    private Uri image_uri = null;
+
+    private ArrayList<String> categoryTitleArrayList, categoryIdArrayList;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivityAddSchoolBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        storagePermission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Please wait");
+        progressDialog.setCanceledOnTouchOutside(false);
+
+        loadDistrictCategories();
+
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        binding.profileIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showImagePickDialog();
+            }
+        });
+
+        binding.districtTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                districtPickDialog();
+            }
+        });
+        binding.boardEt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(AddSchoolActivity.this);
+                builder.setTitle("Choose Board:")
+                        .setItems(Constants.boardCategories, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                String selectedBoard = Constants.boardCategories[i];
+                                binding.boardEt.setText(selectedBoard);
+                            }
+                        }).show();
+            }
+        });
+
+        binding.addSchoolBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                validateData();
+            }
+        });
+    }
+
+    private String name, board, email,  phone, website,  address, latitude, longitude;
+    private void validateData() {
+
+        name = binding.schoolNameEt.getText().toString().trim();
+        board = binding.boardEt.getText().toString().trim();
+        email = binding.emailEt.getText().toString().trim();
+        email = binding.emailEt.getText().toString().trim();
+        phone = binding.phoneEt.getText().toString().trim();
+        website = binding.schoolWebsiteEt.getText().toString().trim();
+        address = binding.addressEt.getText().toString().trim();
+        latitude = binding.latitudeEt.getText().toString().trim();
+        longitude = binding.longitudeEt.getText().toString().trim();
+
+
+        if (TextUtils.isEmpty(name)) {
+            Toast.makeText(this, "Enter School Name...!", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(board)) {
+            Toast.makeText(this, "Select School Board...!", Toast.LENGTH_SHORT).show();
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(this, "Enter Email....", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(selectedCategoryTitle)) {
+            Toast.makeText(this, "Choose District...!", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(phone)) {
+            Toast.makeText(this, "Enter Phone No...!", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(website)) {
+            Toast.makeText(this, "Add website of the School...!", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(address)) {
+            Toast.makeText(this, "Enter Address of School...!", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(latitude)) {
+            Toast.makeText(this, "Enter latitude of School...!", Toast.LENGTH_SHORT).show();
+        }else if (TextUtils.isEmpty(longitude)) {
+            Toast.makeText(this, "Enter longitude of School...!", Toast.LENGTH_SHORT).show();
+        }
+        else {
+                addSchool();
+        }
+    }
+
+    private void addSchool() {
+        progressDialog.setMessage("Adding School");
+        progressDialog.show();
+
+        String timestamp = "" + System.currentTimeMillis();
+
+        if (image_uri == null) {
+            HashMap<String, Object> hashMap = new HashMap<>();
+            hashMap.put("schoolId", "" + timestamp);
+            hashMap.put("schoolName", "" + name);
+            hashMap.put("board", "" + board);
+            hashMap.put("email", "" + email);
+            hashMap.put("phoneNumber", "" + phone );
+            hashMap.put("website", "" + website );
+            hashMap.put("districtId", "" + selectedCategoryId);
+            hashMap.put("district", "" + selectedCategoryTitle);
+            hashMap.put("schoolImage", "");
+            hashMap.put("address", "" + address);
+            hashMap.put("latitude", "" + latitude);
+            hashMap.put("longitude", "" + longitude);
+            hashMap.put("uid", "" + firebaseAuth.getUid());
+
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Schools");
+            ref.child(""+timestamp)
+                    .setValue(hashMap)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddSchoolActivity.this, "School Added Successfully...", Toast.LENGTH_SHORT).show();
+                            clearData();
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddSchoolActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+        } else {
+
+            String filePathAndName = "school_images/" + "" + timestamp;
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathAndName);
+            storageReference.putFile(image_uri)
+
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                            while (!uriTask.isSuccessful()) ;
+                            Uri downloadImageUri = uriTask.getResult();
+
+                            if (uriTask.isSuccessful()) {
+
+                                HashMap<String, Object> hashMap = new HashMap<>();
+                                hashMap.put("schoolId", "" + timestamp);
+                                hashMap.put("schoolName", "" + name);
+                                hashMap.put("board", "" + board);
+                                hashMap.put("email", "" + email);
+                                hashMap.put("phoneNumber", "" + phone );
+                                hashMap.put("website", "" + website );
+                                hashMap.put("districtId", "" + selectedCategoryId);
+                                hashMap.put("district", "" + selectedCategoryTitle);
+                                hashMap.put("schoolImage", ""+downloadImageUri);
+                                hashMap.put("address", "" + address);
+                                hashMap.put("latitude", "" + latitude);
+                                hashMap.put("longitude", "" + longitude);
+                                hashMap.put("uid", "" + firebaseAuth.getUid());
+
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Schools");
+                                ref.child(""+timestamp)
+                                        .setValue(hashMap)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                progressDialog.dismiss();
+                                                Toast.makeText(AddSchoolActivity.this, "School Added Successfully...", Toast.LENGTH_SHORT).show();
+                                                clearData();
+
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                progressDialog.dismiss();
+                                                Toast.makeText(AddSchoolActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+                            }
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddSchoolActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+        }
+    }
+
+    private void clearData() {
+
+        binding.schoolNameEt.setText("");
+        binding.boardEt.setText("");
+        binding.emailEt.setText("");
+        binding.phoneEt.setText("");
+        binding.schoolWebsiteEt.setText("");
+        binding.districtTv.setText("");
+        binding.addressEt.setText("");
+        binding.latitudeEt.setText("");
+        binding.longitudeEt.setText("");
+        binding.profileIv.setImageResource(R.drawable.ic_school_primary);
+        image_uri = null;
+
+    }
+
+    private void loadDistrictCategories() {
+        Log.d(TAG, "loadDistrictCategories: Loading District categories....");
+        categoryTitleArrayList = new ArrayList<>();
+        categoryIdArrayList = new ArrayList<>();
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Districts");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                categoryTitleArrayList.clear();
+                categoryIdArrayList.clear();
+                for (DataSnapshot ds: snapshot.getChildren()){
+
+                    String categoryId = ""+ds.child("id").getValue();
+                    String categoryTitle= ""+ds.child("category").getValue();
+
+                    categoryTitleArrayList.add(categoryTitle);
+                    categoryIdArrayList.add(categoryId);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    private  String selectedCategoryId, selectedCategoryTitle;
+    private void districtPickDialog() {
+        Log.d(TAG, "categoryPickDialog: showing District pick dialog");
+
+        String[] categoriesArray = new String[categoryTitleArrayList.size()];
+        for (int i = 0; i< categoryTitleArrayList.size(); i++){
+            categoriesArray[i] = categoryTitleArrayList.get(i);
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Pick District")
+                .setItems(categoriesArray, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        selectedCategoryTitle = categoryTitleArrayList.get(i);
+                        selectedCategoryId = categoryIdArrayList.get(i);
+                        binding.districtTv.setText(selectedCategoryTitle);
+                        Log.d(TAG, "onClick: Selected District: "+selectedCategoryId+" "+selectedCategoryTitle);
+                    }
+                })
+                .show();
+    }
+
+    private void showImagePickDialog() {
+        String[] options = {"Camera", "Gallery"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Pick Image")
+                .setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (i == 0) {
+                            if (checkCameraPermission()) {
+                                pickImageCamera();
+                            } else {
+                                requestCameraPermission();
+                            }
+                        } else {
+                            if (checkStoragePermission()) {
+                                pickImageGallery();
+                            } else {
+                                requestStoragePermission();
+                            }
+                        }
+                    }
+                })
+                .show();
+    }
+
+    private void pickImageCamera() {
+
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "New Pick");
+        values.put(MediaStore.Images.Media.DESCRIPTION, "Sample Image Description");
+        image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
+        cameraActivityResultLauncher.launch(intent);
+
+    }
+
+    private void pickImageGallery() {
+
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        galleryActivityResultLauncher.launch(intent);
+
+    }
+
+    private ActivityResultLauncher<Intent> cameraActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Log.d(TAG, "onActivityResult: Picked from camera" + image_uri);
+                        Intent data = result.getData();
+
+                        binding.profileIv.setImageURI(image_uri);
+                    } else {
+                        Toast.makeText(AddSchoolActivity.this, "Cancelled", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            }
+    );
+
+    private ActivityResultLauncher<Intent> galleryActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Log.d(TAG, "onActivityResult: " + image_uri);
+                        Intent data = result.getData();
+                        image_uri = data.getData();
+                        Log.d(TAG, "onActivityResult: Picked from gallery" + image_uri);
+
+                        binding.profileIv.setImageURI(image_uri);
+                    } else {
+                        Toast.makeText(AddSchoolActivity.this, "Cancelled", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+    );
+
+    private boolean checkStoragePermission(){
+        boolean result = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                (PackageManager.PERMISSION_GRANTED);
+
+        return result;
+    }
+
+    private void requestStoragePermission(){
+        ActivityCompat.requestPermissions(this, storagePermission, STORAGE_REQUEST_CODE);
+    }
+
+    private boolean checkCameraPermission(){
+        boolean result = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA) ==
+                (PackageManager.PERMISSION_GRANTED);
+        boolean result1 = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                (PackageManager.PERMISSION_GRANTED);
+
+        return result && result1;
+    }
+
+    private void requestCameraPermission(){
+        ActivityCompat.requestPermissions(this, cameraPermission, CAMERA_REQUEST_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case CAMERA_REQUEST_CODE:{
+                if (grantResults.length>0){
+                    boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean storageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                    if (cameraAccepted && storageAccepted){
+                        pickImageCamera();
+                    }
+                    else {
+                        Toast.makeText(this, "Camera permission are necessary...!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+            break;
+            case STORAGE_REQUEST_CODE:{
+                if (grantResults.length>1){
+                    boolean storageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                    if (storageAccepted){
+
+                        pickImageGallery();
+                    }
+                    else {
+                        Toast.makeText(this, "Storage permission is necessary...!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+            break;
+        }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+    }
+
+}

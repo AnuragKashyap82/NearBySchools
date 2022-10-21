@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Edu Search</string>
+    <string name="new_user_signup">New User? <b>SIGN UP</b></string>
+</resources>
